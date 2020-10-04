@@ -5,6 +5,10 @@ This example show how unary operators 'static_cast' work the links below:
 https://en.cppreference.com/w/cpp/language/static_cast
 https://www.geeksforgeeks.org/static_cast-in-c-type-casting-operators/
 */
+
+/*
+VERY IMPORTANT!!!
+*/
 int RndDig, cnt;
 int ind;
 

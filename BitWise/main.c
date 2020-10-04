@@ -42,7 +42,7 @@ int main(void)
 
 {         
      
-        char A = 0b11001010,B = 0b00101100;  
+    char A = 0b11001010,B = 0b00101100;  
     
     #ifdef SHIFT_TEST
     
