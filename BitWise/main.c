@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
+/*Here add some coments to */
 //Complie Control:
 //==================================================================
 #define SHIFT_TEST
