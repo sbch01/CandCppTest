@@ -4,7 +4,7 @@
 /*Here add some coments to */
 //Complie Control:
 //==================================================================
-#define SHIFT_TEST
+//#define SHIFT_TEST
 
 char *NumTo_BinString (char Number);
 
