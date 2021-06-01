@@ -15,7 +15,6 @@ char *NumTo_BinString (char Number){
     //static char StrByte[(8*(sizeof(Number)))];//Chartar array contain the converted number
     
     
-    
     char *StrBytePtr = (char *)malloc(8*sizeof(Number)+1); //Dinamicly allocated pointer
     
         for(int i = 0; i <= (8*sizeof(Number)); i++){
