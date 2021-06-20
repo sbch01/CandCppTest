@@ -2,6 +2,10 @@
     "files.associations": {
         "iostream": "cpp",
         "istream": "cpp",
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "strings.h": "c",
+        "string.h": "c",
+        "stddef.h": "c",
+        "libc-header-start.h": "c"
     }
 }
