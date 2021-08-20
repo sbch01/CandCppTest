@@ -1,27 +1,5 @@
 	.file	"main.c"
 	.text
-	.globl	PoundToKg
-	.type	PoundToKg, @function
-PoundToKg:
-.LFB0:
-	.cfi_startproc
-	endbr64
-	pushq	%rbp
-	.cfi_def_cfa_offset 16
-	.cfi_offset 6, -16
-	movq	%rsp, %rbp
-	.cfi_def_cfa_register 6
-	movl	%edi, -4(%rbp)
-	movl	-4(%rbp), %edx
-	movl	%edx, %eax
-	addl	%eax, %eax
-	addl	%edx, %eax
-	popq	%rbp
-	.cfi_def_cfa 7, 8
-	ret
-	.cfi_endproc
-.LFE0:
-	.size	PoundToKg, .-PoundToKg
 	.globl	main
 	.type	main, @function
 main:
@@ -35,13 +13,13 @@ main:
 	.cfi_def_cfa_register 6
 	subq	$16, %rsp
 	movl	$20, %edi
-	call	PoundToKg
+	call	PoundToKg@PLT
 	movl	%eax, -4(%rbp)
 	movl	$10, %edi
-	call	PoundToKg
+	call	PoundToKg@PLT
 	movl	%eax, -4(%rbp)
 	movl	$40, %edi
-	call	PoundToKg
+	call	PoundToKg@PLT
 	movl	%eax, -4(%rbp)
 	movl	$0, %eax
 	leave
