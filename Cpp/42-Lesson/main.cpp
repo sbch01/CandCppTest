@@ -57,11 +57,6 @@ int main()
 
     MyClass third;
     third.print();
-
-    
-    
-    
-
   
     return 0;
 }
