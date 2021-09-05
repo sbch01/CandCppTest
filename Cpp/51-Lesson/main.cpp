@@ -4,59 +4,60 @@
 using namespace std;
 
 /*
-Пример при който се показва как ключовота сума static
-превръща променлива в един клас обща за всички останали
+Пример, в който се създава клас стек съхраняващ цели числа
 */
 
-class MyClass {
-
+class Stack {
+     
     private:
-
-        int number;
-        char tag;
-
+    enum {MAX=5}; //дефиниране на константа в класа
+    int stackMem[MAX]; //деклариране на масив за стека
+    unsigned int index; //спомагателна променлива за индексиране на членовете на стека
+   
     public:
-
-        static int st_number;
-
-        void setclass_ssettings(int num,char tg){
-          number = num;
-          tag = tg;  
-        }
-
-        void print(void){
-            cout<<"Here is Class parameters:"<<endl
-            <<"number: "<<number<<" static number: "<<st_number<< " charter: "<<tag<<endl;
-        }
-
-        void incNumb(void){
-            number++  ; 
-        }
-
+    void push(int input){
         
+        if(index < MAX)
+            stackMem[index++] = input;
+        else 
+            cout<<"Stack is full"<<endl;
+        
+    }
 
-        //конструктор на каласа вкарва параметри при извикването на класа
-        MyClass () :   number(0), tag('_')
-        {st_number++;}
- 
+    int pull(void){
+
+        if(index==0) {
+            cout<<"Stack is empty"<<endl;
+            return 0;}
+        else 
+            return stackMem[--index];
+    }
+
+    Stack () {index=0;}
+
 };
 
-//!!!! ВАЖНО
-//Трябва да се декларира статичнта променлива извън класаа
-//в противен случай не може да се компилира
-int MyClass::st_number = 0; 
 
 int main()
 {
-    //създаване на променлива от тип MyClass
-    MyClass first;
-    first.print();
 
-    MyClass second;
-    second.print();
+  
+   Stack s1;
 
-    MyClass third;
-    third.print();
+   s1.push(12); //1
+   s1.push(50); //2
+   s1.push(23); //3
+   s1.push(28); //4
+   s1.push(36); //5
+   
+   
+   cout<<s1.pull()<<endl;  
+   cout<<s1.pull()<<endl;  
+   cout<<s1.pull()<<endl;  
+   cout<<s1.pull()<<endl;  
+   cout<<s1.pull()<<endl;
+   cout<<s1.pull()<<endl;
+   
   
     return 0;
 }

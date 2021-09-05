@@ -1,20 +1,15 @@
 /*Here is my first line of code*/
 //Here is more line coment
-
+//Print charter map
 #include <stdio.h>
 
-void PrintHelloMsg(){
-
-printf ("Hello people, are you ok?\n");
-}
 
 
 int main (){
 	
-	for (int i = 0; i < 5; i++)
-		PrintHelloMsg(); //just test
-	
-	printf ("Hello world\n");
+	for (unsigned char chr = 0; chr < 255; chr++)
+		
+	printf ("%d - %c\n",chr,chr);
 	return 0;
 
 }

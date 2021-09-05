@@ -8,18 +8,62 @@ _ZStL19piecewise_construct:
 	.local	_ZStL8__ioinit
 	.comm	_ZStL8__ioinit,1,1
 .LC0:
-	.string	"Here is Class parameters:"
-.LC1:
-	.string	"number: "
-.LC2:
-	.string	" static number: "
-.LC3:
-	.string	" charter: "
-	.section	.text._ZN7MyClass5printEv,"axG",@progbits,_ZN7MyClass5printEv,comdat
+	.string	"Stack is full"
+	.section	.text._ZN5Stack4pushEi,"axG",@progbits,_ZN5Stack4pushEi,comdat
 	.align 2
-	.weak	_ZN7MyClass5printEv
-	.type	_ZN7MyClass5printEv, @function
-_ZN7MyClass5printEv:
+	.weak	_ZN5Stack4pushEi
+	.type	_ZN5Stack4pushEi, @function
+_ZN5Stack4pushEi:
+.LFB1522:
+	.cfi_startproc
+	endbr64
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register 6
+	subq	$16, %rsp
+	movq	%rdi, -8(%rbp)
+	movl	%esi, -12(%rbp)
+	movq	-8(%rbp), %rax
+	movl	20(%rax), %eax
+	cmpl	$4, %eax
+	ja	.L2
+	movq	-8(%rbp), %rax
+	movl	20(%rax), %eax
+	leal	1(%rax), %ecx
+	movq	-8(%rbp), %rdx
+	movl	%ecx, 20(%rdx)
+	movq	-8(%rbp), %rdx
+	movl	%eax, %ecx
+	movl	-12(%rbp), %eax
+	movl	%eax, (%rdx,%rcx,4)
+	jmp	.L4
+.L2:
+	leaq	.LC0(%rip), %rsi
+	leaq	_ZSt4cout(%rip), %rdi
+	call	_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@PLT
+	movq	%rax, %rdx
+	movq	_ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_@GOTPCREL(%rip), %rax
+	movq	%rax, %rsi
+	movq	%rdx, %rdi
+	call	_ZNSolsEPFRSoS_E@PLT
+.L4:
+	nop
+	leave
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE1522:
+	.size	_ZN5Stack4pushEi, .-_ZN5Stack4pushEi
+	.section	.rodata
+.LC1:
+	.string	"Stack is empty"
+	.section	.text._ZN5Stack4pullEv,"axG",@progbits,_ZN5Stack4pullEv,comdat
+	.align 2
+	.weak	_ZN5Stack4pullEv
+	.type	_ZN5Stack4pullEv, @function
+_ZN5Stack4pullEv:
 .LFB1523:
 	.cfi_startproc
 	endbr64
@@ -30,7 +74,11 @@ _ZN7MyClass5printEv:
 	.cfi_def_cfa_register 6
 	subq	$16, %rsp
 	movq	%rdi, -8(%rbp)
-	leaq	.LC0(%rip), %rsi
+	movq	-8(%rbp), %rax
+	movl	20(%rax), %eax
+	testl	%eax, %eax
+	jne	.L6
+	leaq	.LC1(%rip), %rsi
 	leaq	_ZSt4cout(%rip), %rdi
 	call	_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@PLT
 	movq	%rax, %rdx
@@ -38,51 +86,32 @@ _ZN7MyClass5printEv:
 	movq	%rax, %rsi
 	movq	%rdx, %rdi
 	call	_ZNSolsEPFRSoS_E@PLT
-	leaq	.LC1(%rip), %rsi
-	movq	%rax, %rdi
-	call	_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@PLT
-	movq	%rax, %rdx
+	movl	$0, %eax
+	jmp	.L7
+.L6:
 	movq	-8(%rbp), %rax
-	movl	(%rax), %eax
-	movl	%eax, %esi
-	movq	%rdx, %rdi
-	call	_ZNSolsEi@PLT
-	leaq	.LC2(%rip), %rsi
-	movq	%rax, %rdi
-	call	_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@PLT
-	movq	%rax, %rdx
-	movl	_ZN7MyClass9st_numberE(%rip), %eax
-	movl	%eax, %esi
-	movq	%rdx, %rdi
-	call	_ZNSolsEi@PLT
-	leaq	.LC3(%rip), %rsi
-	movq	%rax, %rdi
-	call	_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@PLT
-	movq	%rax, %rdx
+	movl	20(%rax), %eax
+	leal	-1(%rax), %edx
 	movq	-8(%rbp), %rax
-	movzbl	4(%rax), %eax
-	movsbl	%al, %eax
-	movl	%eax, %esi
-	movq	%rdx, %rdi
-	call	_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_c@PLT
-	movq	%rax, %rdx
-	movq	_ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_@GOTPCREL(%rip), %rax
-	movq	%rax, %rsi
-	movq	%rdx, %rdi
-	call	_ZNSolsEPFRSoS_E@PLT
-	nop
+	movl	%edx, 20(%rax)
+	movq	-8(%rbp), %rax
+	movl	20(%rax), %edx
+	movq	-8(%rbp), %rax
+	movl	%edx, %edx
+	movl	(%rax,%rdx,4), %eax
+.L7:
 	leave
 	.cfi_def_cfa 7, 8
 	ret
 	.cfi_endproc
 .LFE1523:
-	.size	_ZN7MyClass5printEv, .-_ZN7MyClass5printEv
-	.section	.text._ZN7MyClassC2Ev,"axG",@progbits,_ZN7MyClassC5Ev,comdat
+	.size	_ZN5Stack4pullEv, .-_ZN5Stack4pullEv
+	.section	.text._ZN5StackC2Ev,"axG",@progbits,_ZN5StackC5Ev,comdat
 	.align 2
-	.weak	_ZN7MyClassC2Ev
-	.type	_ZN7MyClassC2Ev, @function
-_ZN7MyClassC2Ev:
-.LFB1526:
+	.weak	_ZN5StackC2Ev
+	.type	_ZN5StackC2Ev, @function
+_ZN5StackC2Ev:
+.LFB1525:
 	.cfi_startproc
 	endbr64
 	pushq	%rbp
@@ -92,33 +121,21 @@ _ZN7MyClassC2Ev:
 	.cfi_def_cfa_register 6
 	movq	%rdi, -8(%rbp)
 	movq	-8(%rbp), %rax
-	movl	$0, (%rax)
-	movq	-8(%rbp), %rax
-	movb	$95, 4(%rax)
-	movl	_ZN7MyClass9st_numberE(%rip), %eax
-	addl	$1, %eax
-	movl	%eax, _ZN7MyClass9st_numberE(%rip)
+	movl	$0, 20(%rax)
 	nop
 	popq	%rbp
 	.cfi_def_cfa 7, 8
 	ret
 	.cfi_endproc
-.LFE1526:
-	.size	_ZN7MyClassC2Ev, .-_ZN7MyClassC2Ev
-	.weak	_ZN7MyClassC1Ev
-	.set	_ZN7MyClassC1Ev,_ZN7MyClassC2Ev
-	.globl	_ZN7MyClass9st_numberE
-	.bss
-	.align 4
-	.type	_ZN7MyClass9st_numberE, @object
-	.size	_ZN7MyClass9st_numberE, 4
-_ZN7MyClass9st_numberE:
-	.zero	4
+.LFE1525:
+	.size	_ZN5StackC2Ev, .-_ZN5StackC2Ev
+	.weak	_ZN5StackC1Ev
+	.set	_ZN5StackC1Ev,_ZN5StackC2Ev
 	.text
 	.globl	main
 	.type	main, @function
 main:
-.LFB1528:
+.LFB1527:
 	.cfi_startproc
 	endbr64
 	pushq	%rbp
@@ -132,37 +149,108 @@ main:
 	xorl	%eax, %eax
 	leaq	-32(%rbp), %rax
 	movq	%rax, %rdi
-	call	_ZN7MyClassC1Ev
+	call	_ZN5StackC1Ev
+	leaq	-32(%rbp), %rax
+	movl	$12, %esi
+	movq	%rax, %rdi
+	call	_ZN5Stack4pushEi
+	leaq	-32(%rbp), %rax
+	movl	$50, %esi
+	movq	%rax, %rdi
+	call	_ZN5Stack4pushEi
+	leaq	-32(%rbp), %rax
+	movl	$23, %esi
+	movq	%rax, %rdi
+	call	_ZN5Stack4pushEi
+	leaq	-32(%rbp), %rax
+	movl	$28, %esi
+	movq	%rax, %rdi
+	call	_ZN5Stack4pushEi
+	leaq	-32(%rbp), %rax
+	movl	$36, %esi
+	movq	%rax, %rdi
+	call	_ZN5Stack4pushEi
 	leaq	-32(%rbp), %rax
 	movq	%rax, %rdi
-	call	_ZN7MyClass5printEv
-	leaq	-24(%rbp), %rax
+	call	_ZN5Stack4pullEv
+	movl	%eax, %esi
+	leaq	_ZSt4cout(%rip), %rdi
+	call	_ZNSolsEi@PLT
+	movq	%rax, %rdx
+	movq	_ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_@GOTPCREL(%rip), %rax
+	movq	%rax, %rsi
+	movq	%rdx, %rdi
+	call	_ZNSolsEPFRSoS_E@PLT
+	leaq	-32(%rbp), %rax
 	movq	%rax, %rdi
-	call	_ZN7MyClassC1Ev
-	leaq	-24(%rbp), %rax
+	call	_ZN5Stack4pullEv
+	movl	%eax, %esi
+	leaq	_ZSt4cout(%rip), %rdi
+	call	_ZNSolsEi@PLT
+	movq	%rax, %rdx
+	movq	_ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_@GOTPCREL(%rip), %rax
+	movq	%rax, %rsi
+	movq	%rdx, %rdi
+	call	_ZNSolsEPFRSoS_E@PLT
+	leaq	-32(%rbp), %rax
 	movq	%rax, %rdi
-	call	_ZN7MyClass5printEv
-	leaq	-16(%rbp), %rax
+	call	_ZN5Stack4pullEv
+	movl	%eax, %esi
+	leaq	_ZSt4cout(%rip), %rdi
+	call	_ZNSolsEi@PLT
+	movq	%rax, %rdx
+	movq	_ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_@GOTPCREL(%rip), %rax
+	movq	%rax, %rsi
+	movq	%rdx, %rdi
+	call	_ZNSolsEPFRSoS_E@PLT
+	leaq	-32(%rbp), %rax
 	movq	%rax, %rdi
-	call	_ZN7MyClassC1Ev
-	leaq	-16(%rbp), %rax
+	call	_ZN5Stack4pullEv
+	movl	%eax, %esi
+	leaq	_ZSt4cout(%rip), %rdi
+	call	_ZNSolsEi@PLT
+	movq	%rax, %rdx
+	movq	_ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_@GOTPCREL(%rip), %rax
+	movq	%rax, %rsi
+	movq	%rdx, %rdi
+	call	_ZNSolsEPFRSoS_E@PLT
+	leaq	-32(%rbp), %rax
 	movq	%rax, %rdi
-	call	_ZN7MyClass5printEv
+	call	_ZN5Stack4pullEv
+	movl	%eax, %esi
+	leaq	_ZSt4cout(%rip), %rdi
+	call	_ZNSolsEi@PLT
+	movq	%rax, %rdx
+	movq	_ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_@GOTPCREL(%rip), %rax
+	movq	%rax, %rsi
+	movq	%rdx, %rdi
+	call	_ZNSolsEPFRSoS_E@PLT
+	leaq	-32(%rbp), %rax
+	movq	%rax, %rdi
+	call	_ZN5Stack4pullEv
+	movl	%eax, %esi
+	leaq	_ZSt4cout(%rip), %rdi
+	call	_ZNSolsEi@PLT
+	movq	%rax, %rdx
+	movq	_ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_@GOTPCREL(%rip), %rax
+	movq	%rax, %rsi
+	movq	%rdx, %rdi
+	call	_ZNSolsEPFRSoS_E@PLT
 	movl	$0, %eax
-	movq	-8(%rbp), %rdx
-	xorq	%fs:40, %rdx
-	je	.L5
+	movq	-8(%rbp), %rcx
+	xorq	%fs:40, %rcx
+	je	.L11
 	call	__stack_chk_fail@PLT
-.L5:
+.L11:
 	leave
 	.cfi_def_cfa 7, 8
 	ret
 	.cfi_endproc
-.LFE1528:
+.LFE1527:
 	.size	main, .-main
 	.type	_Z41__static_initialization_and_destruction_0ii, @function
 _Z41__static_initialization_and_destruction_0ii:
-.LFB2018:
+.LFB2016:
 	.cfi_startproc
 	endbr64
 	pushq	%rbp
@@ -174,9 +262,9 @@ _Z41__static_initialization_and_destruction_0ii:
 	movl	%edi, -4(%rbp)
 	movl	%esi, -8(%rbp)
 	cmpl	$1, -4(%rbp)
-	jne	.L8
+	jne	.L14
 	cmpl	$65535, -8(%rbp)
-	jne	.L8
+	jne	.L14
 	leaq	_ZStL8__ioinit(%rip), %rdi
 	call	_ZNSt8ios_base4InitC1Ev@PLT
 	leaq	__dso_handle(%rip), %rdx
@@ -184,17 +272,17 @@ _Z41__static_initialization_and_destruction_0ii:
 	movq	_ZNSt8ios_base4InitD1Ev@GOTPCREL(%rip), %rax
 	movq	%rax, %rdi
 	call	__cxa_atexit@PLT
-.L8:
+.L14:
 	nop
 	leave
 	.cfi_def_cfa 7, 8
 	ret
 	.cfi_endproc
-.LFE2018:
+.LFE2016:
 	.size	_Z41__static_initialization_and_destruction_0ii, .-_Z41__static_initialization_and_destruction_0ii
-	.type	_GLOBAL__sub_I__ZN7MyClass9st_numberE, @function
-_GLOBAL__sub_I__ZN7MyClass9st_numberE:
-.LFB2019:
+	.type	_GLOBAL__sub_I_main, @function
+_GLOBAL__sub_I_main:
+.LFB2017:
 	.cfi_startproc
 	endbr64
 	pushq	%rbp
@@ -209,11 +297,11 @@ _GLOBAL__sub_I__ZN7MyClass9st_numberE:
 	.cfi_def_cfa 7, 8
 	ret
 	.cfi_endproc
-.LFE2019:
-	.size	_GLOBAL__sub_I__ZN7MyClass9st_numberE, .-_GLOBAL__sub_I__ZN7MyClass9st_numberE
+.LFE2017:
+	.size	_GLOBAL__sub_I_main, .-_GLOBAL__sub_I_main
 	.section	.init_array,"aw"
 	.align 8
-	.quad	_GLOBAL__sub_I__ZN7MyClass9st_numberE
+	.quad	_GLOBAL__sub_I_main
 	.hidden	__dso_handle
 	.ident	"GCC: (Ubuntu 9.3.0-17ubuntu1~20.04) 9.3.0"
 	.section	.note.GNU-stack,"",@progbits
