@@ -32,20 +32,42 @@ class cNum  {
     img = -1;
   }
 
+  // Дефиниране на оператор
+  cNum operator+ (cNum input){
+
+    cNum res;
+
+    res.real = input.real + real;
+    res.img = input.img + img;
+    
+    return res;
+  }
+
 };
 
 
 int main(){
 
-    cNum number1;
+    cNum number1,number2,number3;
 
-    cout<<"number1 = ";
-    number1.print_cNum();
-    cout<<endl;
+
     number1.set_cNum(3.123,7.3243);
     cout<<"number1 = ";
     number1.print_cNum();
     cout<<endl;
+    
+    number2.set_cNum(2.5,1.3);
+    
+    cout<<"number2 = ";
+    number2.print_cNum();
+    cout<<endl;
+
+    number3 = number1 + number2;
+
+    cout<<"number3 = ";
+    number3.print_cNum();
+    cout<<endl;
+
     return 0;
 
 }
