@@ -3,8 +3,7 @@
         {
             "name": "Linux",
             "includePath": [
-                "${workspaceFolder}/**",
-                "/usr/include/gtk-3.0"
+                "${workspaceFolder}/**"
             ],
             "defines": [],
             "compilerPath": "/bin/gcc",

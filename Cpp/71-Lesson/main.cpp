@@ -13,6 +13,8 @@
 using namespace std;
 
 
+//Основен клас
+//=====================================================================
 class Coil  {
 
   protected:
@@ -56,6 +58,9 @@ class Coil  {
   
 };
 
+
+//Производен клас 
+//=====================================================================
 class EnCoil :public Coil{
 
   public:
@@ -75,8 +80,23 @@ class EnCoil :public Coil{
     cout<<"Stop in layer: "<< (StopInLayer? "enable" : "disable")<<endl<<endl;
 
   }
-
 };
+
+//Клас съдържащ клас в себе си (Aggregation)
+//=====================================================================
+ class Job{
+
+   private:
+    int counter;
+    Coil JobCoil;
+
+  public: 
+
+    void printJob(){
+      JobCoil.plotSetings();
+
+    }    
+ };
 
 
 
@@ -86,13 +106,17 @@ class EnCoil :public Coil{
 int main(){
 
   EnCoil cl1, cl2(200,0.23,2000);
-
+  
   cl1.StopInLayer = true;
 
   cl1.plotSetings();
   cl2.plotSetings();
 
-  //cl1.plotMainSettings();
+  cl1.plotMainSettings();
+
+  Job MyJob;
+
+  MyJob.printJob();
 
 }
 
