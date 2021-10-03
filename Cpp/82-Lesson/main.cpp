@@ -23,6 +23,7 @@ int main(){
 
     //бенефициента е че можем да отместваме указателя и така да показваме желана част от стринга
     cout <<Mystring2<<endl;
+    
     cout <<++Mystring2<<endl;
 
     cout <<Mystring1<<endl;
