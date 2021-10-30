@@ -21,7 +21,6 @@ int main(){
     float Distance = 100;
     int const Myvar = 200;
 
-
     cout<<Distance<<endl;
 
     cnvToInch(&Distance);

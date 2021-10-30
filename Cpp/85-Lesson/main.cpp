@@ -25,7 +25,11 @@ int main(){
 
     //Plot all menu items 
     plotMenu(menuItem,menuChapters);
-    
+
+    cout<<"=================================="<<endl;
+    //Plot only one menu item
+    plotMenuItem(menuItem[4]);
+
 }//end main
 
 

@@ -7,9 +7,12 @@
 char chart1='a',chart2='A';
 char SoureStr[]="Stoian";
 char DestStr[20]="Petra";
+const char *ptrString[3] = {"Hello people","Goodbye","Ohh nO!"};
 
 int main () {
 
+   printf("%s\n",ptrString[1]);
+   
     //strlen връща дължината на стринга
     printf("The lenght of Source string is %lu \n",strlen(SoureStr));
 
