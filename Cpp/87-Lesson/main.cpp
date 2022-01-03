@@ -6,43 +6,46 @@
 using namespace std;
 
 
-struct ListItem {
+struct ListItem { //създаваме структура която ще се свързва в свързан списък
     int Data;
-    ListItem* node;
+    ListItem* node; //това е връзката която е указател към същия тип структура
 };
 
 
-class LinkList {
-private:
-    ListItem* first;
+class LinkList { //създаваме клас  свързан списък
 
-public:
-    LinkList (){ //Constructor
-        first = NULL;
-    }
+    private:
+        ListItem* first; //създаваме указател към първия член на списъка
 
-    void addItem(int d){
+    public:
+        LinkList (){ //Constructor
+            first = NULL; // задаваме стойнност нула на първия указател
+        }
 
-        ListItem * newItem = new ListItem;
-        newItem->Data = d;
-        newItem->node = first;
-        first = newItem;
+        void addItem(int d){// Функция за добавяне на член в свързания списък
 
-    }
-
-    void plotList(){
-
-        ListItem* current = first;
-
-        while(current != NULL){
-
-            cout<<current->Data<< " <- ";
-            current = current->node;
+            ListItem * newItem = new ListItem; //Създава нова променлива от тип ListItem резервира памет за още един член в списъка
+            newItem->Data = d; //Зареждаме данните, които се подават от функцията в променливата Data на структурата
+            newItem->node = first; //задаваме стойност NULL в указателя на новия член на списъка
+            first = newItem; //указателя на първия член го насочваме към токущо създадения нов член
 
         }
-        cout<< first->Data<< endl;
 
-    }
+        void plotList(){ //Функция за печатане на списъка
+
+            ListItem* current = first;
+
+            cout<< "first -> ";
+
+            while(current != NULL){
+
+                cout<<current->Data<< " -> ";
+                current = current->node;
+
+            }
+            cout<< "null"<< endl;
+
+        }
 };
 
 
