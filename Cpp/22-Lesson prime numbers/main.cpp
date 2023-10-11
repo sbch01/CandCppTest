@@ -1,5 +1,6 @@
 // showprim.cpp
 // displays prime number distribution
+//prime numbers - прости числа
 #include <iostream>
 #include <stdio.h>
 //#include <string.h>
@@ -24,7 +25,7 @@ int main()
             break;//break out of inner loop
         }
 
-    cout << ch; //display the character
+    cout << count <<"-" << ch <<","; //display the character
     //getchar();
     //freeze screen until keypress
     }

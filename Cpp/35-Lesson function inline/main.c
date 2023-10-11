@@ -6,7 +6,10 @@
 Пример при който се показва функции, който се извикват без инструкция за прескачане
 inline function
 */
- int PoundToKg(int pound){
+//компилирай с  gcc main.c -S -o asm и компилрай, като махнеш коментара от долния ред
+//inline 
+
+int PoundToKg(int pound){
 
     return pound * 3;
 };

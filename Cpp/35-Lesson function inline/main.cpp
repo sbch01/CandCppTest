@@ -7,7 +7,7 @@ using namespace std;
 Пример при който се показва функции, който се извикват без инструкция за прескачане
 inline function
 */
- int PoundToKg(int pound){
+inline int PoundToKg(int pound){
 
     return pound * 3;
 };
