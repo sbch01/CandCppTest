@@ -8,13 +8,13 @@ using namespace std;
 int main()
 {
 
-//cout << sizeof(int)<<endl<<sizeof(double)<<endl;
+cout << sizeof(int)<<endl<<sizeof(double)<<endl;
 
-int intVar = 3700000000; //1,500,000,000
+int intVar = 1500000001; //1,500,000,000
 intVar = (intVar * 10) / 10; //result too large
 cout << "intVar = " << intVar << endl; //wrong answer
 
-intVar = 3700000000; //cast to double
+intVar = 1500000001; //cast to double
 intVar = (static_cast<double>(intVar) * 10) / 10;
 cout << "intVar = " << intVar << endl; //right answer
 
