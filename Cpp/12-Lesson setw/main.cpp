@@ -1,6 +1,6 @@
 /*demonstrates setw manipulator */
-
-const char sw1 = 7, sw2 =12 ;
+//setw създава интервали между отпечатване на променливи на екрана
+const char sw1 = 5, sw2 =25 ;
 
 #include <iostream>
 #include <iomanip> // for setw

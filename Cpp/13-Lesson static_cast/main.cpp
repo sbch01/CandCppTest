@@ -10,7 +10,11 @@ int main()
 
 cout << sizeof(int)<<endl<<sizeof(double)<<endl;
 
+<<<<<<< HEAD:Cpp/13-Lesson/main.cpp
 int intVar = 1500000001; //1,500,000,000
+=======
+unsigned int intVar = 3700000000; //1,500,000,000
+>>>>>>> cc8ec0a6b7441e9a3efcd11860a33f2a056fd3cc:Cpp/13-Lesson static_cast/main.cpp
 intVar = (intVar * 10) / 10; //result too large
 cout << "intVar = " << intVar << endl; //wrong answer
 
